@@ -9,13 +9,13 @@ export class ListService {
 
   constructor() {}
   
-  setFormData  (data:any){
+  setFormData (data:any){
     this.formData=data
     console.log(this.formData,'data');
     
   }
 
-  getFormdata(){
+  getFormData(){
     return this.formData;
   }
 

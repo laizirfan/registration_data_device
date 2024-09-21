@@ -19,6 +19,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ListComponent } from './list/list.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import { ListComponent } from './list/list.component';
 
     MatCheckboxModule,
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
     
     
     

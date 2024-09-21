@@ -1,214 +1,240 @@
-<form  #regform="ngForm">
+<form action="" #regform="ngForm" style="background-color: rgb(66, 156, 163);">
   <div class="row mx-5 mt-5">
-
+   
+  
     <div class="col-md-2  mt-5">
       <img
-        src="https://th.bing.com/th/id/R.e219163d793736fb056e80d5922a7f82?rik=m1mBctCAx6eXHQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fbusinessman-at-desk-png-businessman-working-in-his-desk-1-02-png-1198.png&ehk=tlG4ljpkbELt3Ww%2bR2fH8vcq7RkWyOHJ8HmOz4DAHu0%3d&risl=&pid=ImgRaw&r=0"
+        src="https://www.pinclipart.com/picdir/big/71-715231_simba-branch-office-man-working-in-office-clipart.png"
         width="100px" alt="">
-      <h4><b>Human Being</b></h4>
+      <h4>Human Being</h4>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur beatae accusantium earum eveniet hic
         similique dolore autem quo fuga necessitatibus?</p>
     </div>
-    <div class="col-md-5  mt-5">
+    <div class="col-md-5 mt-5">
       <h3><b>User Details</b></h3>
       <div>
-        <div class="mt-3">
-          <label for="" class="text-secondary">Full name*</label>
-
-          <div class="example-form ">
-
-            <mat-form-field class="example-full-width ">
-
-              <input matInput placeholder="" value="" class="text-secondary" [(ngModel)]="fname" name="fname"
-                #fullname="ngModel" required pattern="[a-z A-Z]*" type="text">
-
-              <div *ngIf="fullname.invalid && fullname.touched">
-                <span class="text-danger" *ngIf="fullname.errors?.['required']">Enter full name!!!! </span>
-
-                <span class="text-danger" *ngIf="fullname.errors?.['pattern']"> Type in letters</span>
-
-              </div>
-
+  
+        <!-- name -->
+  
+        <div>
+          <label for="" class="text-dark">Full name*</label>
+          <div class="example-form">
+            <mat-form-field class="example-full-width">
+  
+              <input [(ngModel)]=" fname" name="fname" #fullname="ngModel" required pattern="[a-z A-Z]*" type="text"  class="text-secondary" matInput placeholder="Ex:John" value="">
             </mat-form-field>
-
           </div>
-
+          <div *ngIf="fullname.touched && fullname.invalid">
+          <span class="text-danger" *ngIf="fullname.errors?.['required']" >Enter Full Name**</span>
+          <span class="text-danger" *ngIf="fullname.errors?.['pattern']" > Type in Letters**</span>
         </div>
-        <div class="mt-3">
-          <label for="" class="text-secondary">Your Birthday*</label>
-
-          <div class="flex-column ">
+        </div>
+  
+        <!-- date of birth -->
+  
+        <div>
+          <label for="" class="text-dark">Your Birthday*</label>
+  
+          <div class="flex-column">
             <mat-form-field>
               <mat-label>Choose a date</mat-label>
-
-              <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="date" #datecal="ngModel" required
-                readonly>
-
+              <input [(ngModel)]="dobdate" name="dobdate" #dateofbirth="ngModel" required  title="date" matInput [matDatepicker]="picker">
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-
-            <div *ngIf="datecal.invalid && datecal.touched">
-              <span class="text-danger" *ngIf="datecal.errors?.['required']">please enter value</span>
-
-            </div>
           </div>
-
-        </div>
-        <!--gender-->
-        <div class="mt-3">
-          <label for="" class="text-secondary">Gender*</label>
-          <mat-radio-group aria-label="Select an option" name="gender" [ngModel]="gender">
-            <mat-radio-button   value="m" > <i class="fa-solid fa-mars fa-lg "
-                style="color: #74C0FC;"></i></mat-radio-button>
-                
-            <mat-radio-button value="f" id="radio1">  <i class="fa-solid fa-venus fa-lg"
-                style="color:  #fc73e3;"></i></mat-radio-button>
-            <mat-radio-button value="t" id="radio2">  <i class="fa-solid fa-venus-mars fa-lg"
-                style="color: #63E6BE;"></i></mat-radio-button>
-
-          </mat-radio-group>
-
-         
-        </div>
-     <!--country-->
-        <div class="mt-3 row">
-          <div class="col-md">
-            <label for="" class="text-secondary">Country*</label>
-            <div class="flex-column mt-2">
-              <form [formGroup]="form">
-                <mat-form-field>
-                  <select matNativeControl formControlName="country" required>
-                    <option value="">Select Your Country</option>
-                    <option value="india">India</option>
-                    <option value="united-states">United States</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia</option>
-                    <option value="germany">Germany</option>
-                    <option value="france">France</option>
-                    <option value="japan">Japan</option>
-                    <option value="brazil">Brazil</option>
-                    <option value="south-africa">South Africa</option>
-                    <option value="china">China</option>
-                    <option value="russia">Russia</option>
-                    <option value="mexico">Mexico</option>
-                    <option value="italy">Italy</option>
-                    <option value="spain">Spain</option>
-                    <option value="south-korea">South Korea</option>
-                    <option value="argentina">Argentina</option>
-                    <option value="netherlands">Netherlands</option>
-                    <option value="sweden">Sweden</option>
-                    <option value="new-zealand">New Zealand</option>
-                    <option value="switzerland">Switzerland</option>
-
-                  </select>
-                </mat-form-field>
-              </form>
-
-            </div>
-            <div *ngIf="form.controls['country'].invalid && form.controls['country'].touched">
-              <span class="text-danger">Please Select a country**</span>
-            </div>
+          <div *ngIf="dateofbirth.touched && dateofbirth.invalid">
+            <span class="text-danger" *ngIf="dateofbirth.errors?.['required']">Select your Date Of birth</span>
           </div>
+  
+        </div>
+  
+        <!-- gender -->
+  
+        <div>
+          <label for="" class="text-dark">Gender*</label>
+            <div class="flex-column">
+              <mat-radio-group aria-label="Select an option" name="gender" [(ngModel)]="gender">
+                <mat-radio-button id="radio0" value="male">Male <i class="fa-solid fa-mars"  style="color: #74C0FC;"></i></mat-radio-button>
+                <mat-radio-button id="radio1" value="female">Female <i class="fa-solid fa-venus" style="color: #ff6ba6;"></i></mat-radio-button>
+                <mat-radio-button id="radio2" value="other"> Others <i class="fa-solid fa-transgender"></i></mat-radio-button>
+              </mat-radio-group>
+            </div> 
           
-          <div class="col-md ">
-            <label for="" class="text-secondary mb-2">Phone*</label>
-            <mat-form-field class="example-full-width ">
-
-              <input [(ngModel)]="number" name="number" #phoneno="ngModel" required pattern="[0-9+]*" minlength="10"
-                class="text-secondary" matInput placeholder="" value="">
-            </mat-form-field>
-            <div *ngIf="phoneno.invalid && phoneno.touched">
-              <span class="text-danger" *ngIf="phoneno.errors?.['required']">Kindly enter Number**</span>
-              <span class="text-danger" *ngIf="phoneno.errors?.['minlength']">Min 10**</span>
-              <span class="text-danger" *ngIf="phoneno.errors?.['pattern']">Number only</span>
+       
+        </div>
+  
+        <!--country -->
+  
+        <div class="row mt-3">
+          <div class="col-md">
+            <label for="" class="text-dark flex-row ">Country</label>
+            <div style="flex-column">
+              <form [formGroup]="form" action="">
+              <mat-form-field>
+                <select title="cou" matNativeControl formControlName="country" required>
+                  <option value="">--Select--</option>
+                  <option value="india">India</option>
+                  <option value="united-states">United States</option>
+                  <option value="canada">Canada</option>
+                  <option value="australia">Australia</option>
+                  <option value="germany">Germany</option>
+                  <option value="france">France</option>
+                  <option value="japan">Japan</option>
+                  <option value="brazil">Brazil</option>
+                  <option value="south-africa">South Africa</option>
+                  <option value="china">China</option>
+                  <option value="russia">Russia</option>
+                  <option value="mexico">Mexico</option>
+                  <option value="italy">Italy</option>
+                  <option value="spain">Spain</option>
+                  <option value="south-korea">South Korea</option>
+                  <option value="argentina">Argentina</option>
+                  <option value="netherlands">Netherlands</option>
+                  <option value="sweden">Sweden</option>
+                  <option value="new-zealand">New Zealand</option>
+                  <option value="switzerland">Switzerland</option>
+                </select>
+              </mat-form-field>
+            </form>
+            </div>
+            <div class="text-danger" *ngIf="form.controls['country'].invalid && form.controls['country'].touched">
+              <span class="text-danger" >Please Select a country</span>
+             
             </div>
           </div>
-
-
-          <div>
-            <label for="" class="text-secondary mb-2">Bio*</label>
-            <mat-form-field class="example-full-width ">
-              <input [(ngModel)]="bio" name="bio" #biour="ngModel" required minlength="20" class="text-secondary"
-                matInput placeholder="Tell us about Yourself!!" value="">
+                      <!-- Phone -->
+  
+          <div class="col-md">
+            <div> 
+              <label for="" class="text-dark ">Phone</label>
+            </div>
+            <div class="example-form">
+              <mat-form-field class="example-full-width">
+  
+                <input class="text-secondary" matInput placeholder="Ex:123456789" value="" name="phone" [(ngModel)]="phone" #phoneInput="ngModel" required pattern="[0-9+]*" minlength="10" maxlength="15">
+              </mat-form-field>
+            </div>
+            <div class="text-danger" *ngIf="phoneInput.invalid && phoneInput.touched">
+              <span class="text-danger" *ngIf="phoneInput.errors?.['required']">Phone Number is mandatory</span>
+              <span class="text-danger" *ngIf="phoneInput.errors?.['minlength']">Please enter a valid number</span>
+              <span class="text-danger" *ngIf="phoneInput.errors?.['maxlength']">Please enter a valid number</span>
+              <span class="text-danger" *ngIf="phoneInput.errors?.['pattern']"> not letters</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- bio -->
+  
+     <div>
+          <div> <label for="" class="text-dark ">Bio</label>
+          </div>
+          <form class="example-form mt-3">
+            <mat-form-field class="example-full-width">
+    
+              <input class="text-secondary" matInput placeholder="Tell us about yourself" value=""  name="bio" [(ngModel)]="bio" #bioInput="ngModel" required minlength="20">
             </mat-form-field>
-          </div>
-          <div *ngIf="biour.invalid && biour.touched">
-            <span class="text-danger" *ngIf="biour.errors?.['required']"> Kindlly Fill the form** </span>
-            <span class="text-danger" *ngIf="biour.errors?.['minlength']">Minimum 20 Character** </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-space-between">
-
-        <button class="btn btn-outline-success"   (click)="finalesubmit()"   [disabled]="regform.invalid">Submit</button>
-        <button (click)="clearPage() " class="btn btn-outline-secondary mx-4">Clear</button>
-
-        <button class="btn btn-outline-success" routerLink="/list">List</button>
-      </div>
-
+          </form>
+    
+     </div>
+     <div class="error" *ngIf="bioInput.invalid && bioInput.touched">
+      <span class="text-danger" *ngIf="bioInput.errors?.['required']">bio is required.</span>
+      <span class="text-danger" *ngIf="bioInput.errors?.['minlength']">bio must be at least 20 characters.</span>
     </div>
-    <div class="col-md-5  mt-5">
+  
+  
+     <!-- submit -->
+  
+  <div>
+    <button (click)="submitform()" [disabled]="regform.invalid" class="btn btn-outline-success mx-4">Submit</button>
+    
+    <button routerLink="/list" class="btn btn-outline-secondary"> List </button>
+  
+    <button (click)="clearPage()" class="btn btn-outline-danger mx-4"> Clear </button>
+  
+    
+  </div>
+      </div>
+    </div>
+    <div class="col-md-5 mt-5"> 
       <h3><b>Account Details</b></h3>
+  
+      <!-- Username -->
+      
       <div>
-        <label for="" class="text-secondary mb-2">UserName*</label>
-
-        <mat-form-field class="example-full-width ">
-
-          <input [(ngModel)]="username" name="username" #uname="ngModel" required pattern="[a-zA-Z@#_0-9]*"
-            class="text-secondary" matInput placeholder="" value="">
-        </mat-form-field>
+        <label for="" class="text-dark">Username *</label>
+        <div class="example-form">
+          <mat-form-field class="example-full-width">
+  
+            <input [(ngModel)]="username" name="username" #uname="ngModel" required pattern="[a-zA-Z@_0-9]*" class="text-secondary" matInput placeholder="Ex:John@123" value="">
+          </mat-form-field>
+        </div>
         <div *ngIf="uname.invalid && uname.touched">
-          <span class="text-danger" *ngIf="uname.errors?.['required']">Please fill the form</span>
-          <span class="text-danger " *ngIf="uname.errors?.['pattern']">username not accepted</span>
-        </div>
-
-      </div>
-      <div>
-        <label for="" class="text-secondary mb-2">Email*</label>
-        <mat-form-field class="example-full-width ">
-          <input [(ngModel)]="mail" name="mail" #email="ngModel" required email class="text-secondary" matInput
-            placeholder="" value="" autocomplete="off">
-        </mat-form-field>
-      </div>
-      <div *ngIf="email.touched && email.touched">
-        <span class="text-danger" *ngIf="email.errors?.['required']">Please Fill the form </span>
-        <span class="text-danger" *ngIf="email.errors?.['email']">error </span>
-      </div>
-
-      <div>
-        <label for="" class="text-secondary mb-2">Password*</label>
-        <mat-form-field class="example-full-width ">
-          <input [(ngModel)]="password" name="password" #passkey="ngModel" required minlength="6" type="password"
-            class="text-secondary" matInput placeholder="" value="">
-        </mat-form-field>
-
-        <div *ngIf="passkey.invalid && passkey.touched">
-          <span class="text-danger" *ngIf="passkey.errors?.['required']">Fill the form***</span>
-          <span class="text-danger" *ngIf="passkey.errors?.['minlength']">Min 6 Character***</span>
-        </div>
-
-      </div>
-      <div>
-        <label for="" class="text-secondary mb-2">Confirm Password*</label>
-        <mat-form-field class="example-full-width ">
-          <input [(ngModel)]="password2" name="password2" #passkey2="ngModel" required minlength="6"  type="password" class="text-secondary" matInput placeholder="" value="">
-        </mat-form-field>
-        <div *ngIf="passkey2.invalid && passkey2.touched">
-          <span class="text-danger" *ngIf="passkey2.errors?.['required']">Fill the form***</span>
-          <span class="text-danger" *ngIf="passkey2.errors?.['minlength']">Min 6 Character***</span>
+          <span class="text-danger" *ngIf="uname.errors?.['required']">
+            Please Fill the form
+          </span>
+          <span class="text-danger" *ngIf="uname.errors?.['pattern']"> Use these kind of characters a-zA-Z0-9@_$#</span>
         </div>
       </div>
-
-      <form #termcon="ngForm">
-        <mat-checkbox class="example-margin" ngModel required="" name="acceptedterms">I accept terms and conditions</mat-checkbox>
-      </form>
-      <div *ngIf="termcon.controls['acceptedterms']?.invalid && termcon.controls['acceptedterms']?.touched ">
-        <span class="text-danger" >You Must accept the terms to continue**</span>
+  
+      <!-- Email -->
+  
+      
+      <div>
+        <label for="" class="text-dark">Email*</label>
+        <div class="example-form">
+          <mat-form-field class="example-full-width">
+  
+            <input name="email" [(ngModel)]="email" #emailInput="ngModel" required email class="text-secondary" matInput placeholder="Ex:john@gmail.com" value="" autocomplete="off">
+          </mat-form-field>
+        </div>
+        <div class="error" *ngIf="emailInput.invalid && emailInput.touched">
+          <span class="text-danger" *ngIf="emailInput.errors?.['required']">Email is required.</span>
+          <span class="text-danger" *ngIf="emailInput.errors?.['email']">Please enter a valid email.</span>
+        </div>
       </div>
-
+  
+      <!-- Password -->
+  
+      <div>
+        <label for="" class="text-dark">Password*</label>
+        <div class="example-form">
+          <mat-form-field class="example-full-width">
+  
+            <input type="password" class="text-secondary" matInput placeholder="Password" value=""  name="password" [(ngModel)]="password" #passwordInput="ngModel" required minlength="6">
+          </mat-form-field>
+        </div>
+        <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+          <span class="text-danger" *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+          <span class="text-danger" *ngIf="passwordInput.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </div>
+      </div>
+  
+      <!-- Confirm Password --> 
+      
+        <label for="" class="text-dark">Confirm Password*</label>
+        <div class="example-form">
+          <mat-form-field class="example-full-width">
+  
+            <input type="password" class="text-secondary" matInput placeholder="Password" value="" name="cnfpwd" [(ngModel)]="cnfpwd" #cnfpwdInput="ngModel" required minlength="6">
+          </mat-form-field>
+          <div class="error" *ngIf="cnfpwdInput.invalid && cnfpwdInput.touched">
+            <span class="text-danger" *ngIf="cnfpwdInput.errors?.['required']">confirm your password</span>
+            <span class="text-danger" *ngIf="cnfpwdInput.errors?.['minlength']">Password must be at least 6 characters.</span>
+          </div>
+        </div>
+      
+  
+      <!-- checkbox -->
+  <form #myForm="ngForm">
+    
+          <mat-checkbox class="example-margin mt-3" name="acceptterms" ngModel required>Accept Terms and Conditions</mat-checkbox>
+    <div *ngIf="myForm.controls['acceptterms']?.invalid && myForm.controls['acceptterms']?.touched">
+      <span class="text-danger mx-3">Accept to continue</span>
     </div>
- 
+  </form>
+    </div>
+    
+  
   </div>
 </form>

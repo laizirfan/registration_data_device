@@ -10,12 +10,10 @@ export class ListComponent implements OnInit {
    
   formData:any;
 
-  constructor(private listservice:ListService ){
+  constructor(private listService:ListService) { }
 
+  ngOnInit(): void {
+    this.formData = this.listService.getFormData();
   }
-
-ngOnInit(): void {
-  this.formData=this.listservice.getFormdata()
-}
 
 }
