@@ -8,12 +8,15 @@ import { ListService } from '../list.service';
 })
 export class ListComponent implements OnInit {
    
-  formData:any;
+
+
+  formDataArray:any=[];
 
   constructor(private listService:ListService) { }
 
   ngOnInit(): void {
-    this.formData = this.listService.getFormData();
+    this.formDataArray = this.listService.getFormData();
+  
   }
 
 }

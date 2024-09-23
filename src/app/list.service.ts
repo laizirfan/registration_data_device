@@ -5,18 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class ListService {
 
-  private formData:any
+  private formDataArray:any[]=[];
 
-  constructor() {}
+
   
-  setFormData (data:any){
-    this.formData=data
-    console.log(this.formData,'data');
+  setFormData (formData:any){
+    this.formDataArray.push(formData)
+    console.log(this.formDataArray);
+
     
+
+
   }
 
-  getFormData(){
-    return this.formData;
+  getFormData():any[] {
+    return this.formDataArray;
   }
 
 

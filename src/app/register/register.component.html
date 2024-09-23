@@ -1,5 +1,5 @@
 <form action="" #regform="ngForm" style="background-color: rgb(66, 156, 163);">
-  <div class="row mx-5 mt-5">
+  <div class="row mx-5 ">
    
   
     <div class="col-md-2  mt-5">
@@ -60,8 +60,6 @@
                 <mat-radio-button id="radio2" value="other"> Others <i class="fa-solid fa-transgender"></i></mat-radio-button>
               </mat-radio-group>
             </div> 
-          
-       
         </div>
   
         <!--country -->
@@ -69,7 +67,9 @@
         <div class="row mt-3">
           <div class="col-md">
             <label for="" class="text-dark flex-row ">Country</label>
-            <div style="flex-column">
+            
+            <!-- style="flex-column;" -->
+            <div >
               <form [formGroup]="form" action="">
               <mat-form-field>
                 <select title="cou" matNativeControl formControlName="country" required>
@@ -112,7 +112,7 @@
             <div class="example-form">
               <mat-form-field class="example-full-width">
   
-                <input class="text-secondary" matInput placeholder="Ex:123456789" value="" name="phone" [(ngModel)]="phone" #phoneInput="ngModel" required pattern="[0-9+]*" minlength="10" maxlength="15">
+                <input class="text-secondary" matInput placeholder="" value="" name="phone" [(ngModel)]="phone" #phoneInput="ngModel" required pattern="[0-9+]*" minlength="10" maxlength="15">
               </mat-form-field>
             </div>
             <div class="text-danger" *ngIf="phoneInput.invalid && phoneInput.touched">
@@ -173,7 +173,7 @@
           <span class="text-danger" *ngIf="uname.errors?.['required']">
             Please Fill the form
           </span>
-          <span class="text-danger" *ngIf="uname.errors?.['pattern']"> Use these kind of characters a-zA-Z0-9@_$#</span>
+          <span class="text-danger" *ngIf="uname.errors?.['pattern']">invalif </span>
         </div>
       </div>
   
@@ -233,8 +233,33 @@
       <span class="text-danger mx-3">Accept to continue</span>
     </div>
   </form>
-    </div>
-    
-  
+    </div>  
   </div>
+
+
+  <div class="d-flex justify-content-center mt-4" *ngIf="formDataArray && formDataArray.length"   >
+    <table class="table table-bordered table-hover shadow p-3 w-50 mt-5 "  >
+        <thead class="thead-dark">
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let formData of formDataArray;let i =index "  >
+            <th scope="row" >{{i+1}}</th>
+            <td>{{formData.fname}}</td>
+            <td>{{formData.email}}</td>
+            <td>{{formData.gender}}</td>
+            <td>{{formData.phone}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
 </form>
+
+
+

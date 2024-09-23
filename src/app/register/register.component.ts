@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ListService } from '../list.service';
-import { Router } from '@angular/router';
+import { ListComponent } from '../list/list.component';
+
 
 
 @Component({
@@ -13,15 +14,18 @@ export class RegisterComponent implements OnInit{
 
   form: FormGroup;
   selectedGender: string = '';
-  constructor(private fb: FormBuilder, private listService: ListService) {
+  constructor(private fb: FormBuilder, private listService: ListService ,) {
     this.form = this.fb.group({
       country: ['', Validators.required],
       gender: ['', Validators.required],
     });
 
   }
-  ngOnInit(): void {
 
+  formData:any 
+  
+  ngOnInit(): void {
+    this.formData = this.listService.getFormData();
   }
 
   fname: string = "";
@@ -33,11 +37,14 @@ export class RegisterComponent implements OnInit{
   phone: string = '';
   cnfpwd: string = '';
   gender: string = '';
+  
   clearPage() {
-   window.location.reload();
+  window.location.reload();
     alert('Page Cleared Sucessfully')
   }
+  
 
+  formDataArray:any[]=[]
 
   submitform() {
     if (this.fname &&
@@ -48,19 +55,19 @@ export class RegisterComponent implements OnInit{
       this.password === this.cnfpwd &&
       this.bio &&
       this.phone) {
-      const formData = {
+
+    const formData = {
         fname: this.fname,
         email: this.email,
         gender: this.gender,
         phone: this.phone,
       };
-
+     this.formDataArray.push(formData)
       this.listService.setFormData(formData);
-      alert("Form Submitted Successfully")
-
     } else {
       alert("Enter a valid form")
     }
   }
   
+
 }
